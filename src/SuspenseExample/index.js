@@ -5,17 +5,27 @@ import { createFetcher } from '../Suspense/context';
 const fetchData = () => {
   return new Promise((resolve, _reject) => {
     setTimeout(() => {
-      resolve('this is the content');
-    }, 5000);
+      resolve('display the real content: hello world');
+    }, 3000);
   });
 };
 
 const fetchDataFetcher = createFetcher(fetchData);
 
-export function Content() {
+export function Example() {
+    const containerStyle = {
+      height: '100px',
+      lineHeight: '100px',
+      fontSize: '20px',
+      textAlign: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.02)',
+      color: 'red'
+    }
     return (
         <React.Fragment>
-            <div>{fetchDataFetcher()}</div>
+            <div style={containerStyle}>
+              {fetchDataFetcher()}
+            </div>
         </React.Fragment>
     );
 }

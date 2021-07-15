@@ -70,14 +70,12 @@ export default class Suspense extends React.Component {
         const { isLoading } = this.state;
 
         const {
-            callback = <div>数据加载中</div>,
+            callback = <div>data loading...</div>,
             children
         } = this.props;
 
-
         const childComponent = isLoading ? callback : children;
 
-        console.log('rending loading', isLoading);
         return (
             <SuspenseContext.Provider value={{
                 getTaskValue: this.getTaskValue,
